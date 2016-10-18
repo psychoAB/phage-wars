@@ -1,9 +1,9 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class PhageWarsGame extends ApplicationAdapter {
+public class PhageWarsGame extends Game {
     public static final int HEIGHT = 500;
     public static final int WIDTH = 800;
 

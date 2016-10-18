@@ -7,7 +7,7 @@ public class PhageWarsGame extends Game {
     public static final int HEIGHT = 500;
     public static final int WIDTH = 800;
 
-    SpriteBatch batch;
+    public SpriteBatch batch;
 
     @Override public void create () {
         batch = new SpriteBatch();

@@ -4,21 +4,20 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PhageWarsGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-	}
+    public static final int HEIGHT = 500;
+    public static final int WIDTH = 800;
 
-	@Override
-	public void render () {
-		batch.begin();
-		batch.end();
-	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-	}
+    SpriteBatch batch;
+
+    @Override public void create () {
+        batch = new SpriteBatch();
+    }
+
+    @Override public void render () {
+        super.render();
+    }
+
+    @Override public void dispose () {
+        batch.dispose();
+    }
 }

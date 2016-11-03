@@ -3,7 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.math.Vector2;
 
 public class Cell {
-    public IMAGE_SIZE = 120;
+    public static final int IMAGE_SIZE = 120;
 
     private World world;
 

@@ -17,6 +17,8 @@ public class Cell {
 
         virusNumber = 0;
         regenerationRate = 3;
+
+        registerTimerListener();
     }
 
     public Vector2 getPosition() {
@@ -25,5 +27,13 @@ public class Cell {
 
     public int getVirusNumber() {
         return virusNumber;
+    }
+
+    private void registerTimerListener() {
+        world.registerTimerListener(new World.TimerListener() {
+            @Override public void notifyTimerListener() {
+                virusNumber += regenerationRate;
+            }
+        });
     }
 }

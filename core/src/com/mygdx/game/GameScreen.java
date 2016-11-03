@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class GameScreen extends ScreenAdapter {
     private PhageWarsGame phageWarsGame;
@@ -14,6 +15,8 @@ public class GameScreen extends ScreenAdapter {
     
     private Texture background;
     private Texture cellImage;
+
+    private BitmapFont font;
     
     public GameScreen(PhageWarsGame phageWarsGame) {
         this.phageWarsGame = phageWarsGame;
@@ -21,6 +24,7 @@ public class GameScreen extends ScreenAdapter {
         cell = new Cell(100, 100);
         background = new Texture("background.png");
         cellImage = new Texture("cell.png");
+        font = new BitmapFont();
     }
 
     @Override public void render(float delta) {
@@ -35,6 +39,7 @@ public class GameScreen extends ScreenAdapter {
 
         batch.draw(background, 0, 0);
         batch.draw(cellImage, cellPosition.x, cellPosition.y);
+        font.draw(batch, "" + cell.getVirusNumber(), cellPosition.x + cellImage.getWidth() / 2, cellPosition.y + cellImage.getHeight() / 2);
         batch.end();
     }
 }

@@ -19,4 +19,10 @@ public class CellTest {
         assertEquals(100, positon.x, 0.01);
         assertEquals(120, positon.y, 0.01);
     }
+
+    @Test public void cellCreatedWithZeroVirusNumber() {
+        Cell cell = new Cell(100, 120);
+        assertEquals(0, cell.getVirusNumber());
+    }
+    
 }

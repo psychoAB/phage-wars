@@ -30,7 +30,7 @@ public class Cell {
     }
 
     private void registerTimerListener() {
-        world.registerTimerListener(new World.TimerListener() {
+        world.worldTimer.registerTimerListener(new WorldTimer.TimerListener() {
             @Override public void notifyTimerListener() {
                 virusNumber += regenerationRate;
             }

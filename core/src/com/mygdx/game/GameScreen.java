@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class GameScreen extends ScreenAdapter {
     private PhageWarsGame phageWarsGame;
+    
+    private World world;
 
     private Cell cell;
     
@@ -21,7 +23,8 @@ public class GameScreen extends ScreenAdapter {
     public GameScreen(PhageWarsGame phageWarsGame) {
         this.phageWarsGame = phageWarsGame;
 
-        cell = new Cell(100, 100);
+        world = new World();
+        cell = new Cell(100, 100, world);
         background = new Texture("background.png");
         cellImage = new Texture("cell.png");
         font = new BitmapFont();

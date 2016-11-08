@@ -16,8 +16,8 @@ public class CellTest {
     @Test public void cellShouldBeInRightPosition() {
         Cell cell = new Cell(100, 120, new World());
         Vector2 positon = cell.getPosition();
-        assertEquals(100, positon.x, 0.01);
-        assertEquals(120, positon.y, 0.01);
+        assertEquals(100 - Cell.IMAGE_SIZE / 2, positon.x, 0.01);
+        assertEquals(120 - Cell.IMAGE_SIZE / 2, positon.y, 0.01);
     }
 
     @Test public void cellCreatedWithZeroVirusNumber() {

@@ -9,11 +9,13 @@ public class GameScreen extends ScreenAdapter {
     private PhageWarsGame phageWarsGame;
     
     private World world;
+    private WorldRenderer worldRenderer;
 
     public GameScreen(PhageWarsGame phageWarsGame) {
         this.phageWarsGame = phageWarsGame;
 
-        world = new World(phageWarsGame);
+        world = new World();
+        worldRenderer = new WorldRenderer(phageWarsGame, world);
     }
 
     @Override public void render(float delta) {
@@ -26,6 +28,6 @@ public class GameScreen extends ScreenAdapter {
 
         batch.end();
 
-        world.render(delta);
+        worldRenderer.render(delta);
     }
 }

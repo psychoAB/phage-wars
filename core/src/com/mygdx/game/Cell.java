@@ -85,9 +85,9 @@ public class Cell {
     }
     
     private void registerMouseListener() {
-        world.mouseInput.registerMouseListener(new MouseInput.MouseListener() {
+        world.worldLogic.mouseInput.registerMouseListener(new MouseInput.MouseListener() {
             @Override public void notifyMouseListener(int x, int y) {
-                if(isOverlapWithCell(x, y) || world.getBases().contains(Cell.this)) {
+                if(isOverlapWithCell(x, y) || world.worldLogic.getBases().contains(Cell.this)) {
                     mouseOn = true;
                 }
                 else { 

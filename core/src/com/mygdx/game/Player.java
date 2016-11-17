@@ -2,6 +2,10 @@ package com.mygdx.game;
 
 public class Player {
 
+    public static final int NATURAL = 0;
+    public static final int ME = 1;
+    public static final int OPPONENT = 2;
+
     private int playerType;
     private int initVirusNumber;
     private int regenerationRate;

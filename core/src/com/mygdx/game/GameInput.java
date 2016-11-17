@@ -17,7 +17,7 @@ public class GameInput extends InputAdapter {
 
     @Override public boolean mouseMoved(int x, int y) {
         y = GameScreen.screenCoordinateToTextureCoordinate(y);
-        world.mouseInput(x, y, world.MOUSE_MOVE);
+        world.worldLogic.mouseInput(x, y, world.worldLogic.MOUSE_MOVE);
         return true;
     }
 
@@ -27,14 +27,14 @@ public class GameInput extends InputAdapter {
             return false;
         }
         dragging = true;
-        world.mouseInput(x, y, world.MOUSE_PRESSED);
+        world.worldLogic.mouseInput(x, y, world.worldLogic.MOUSE_PRESSED);
         return true;
     }
 
     @Override public boolean touchDragged(int x, int y, int pointer) {
         y = GameScreen.screenCoordinateToTextureCoordinate(y);
         if(dragging) {
-            world.mouseInput(x, y, world.MOUSE_DRAG);
+            world.worldLogic.mouseInput(x, y, world.worldLogic.MOUSE_DRAG);
         }
         return dragging;
     }
@@ -45,7 +45,7 @@ public class GameInput extends InputAdapter {
             return false;
         }
         dragging = false;
-        world.mouseInput(x, y, world.MOUSE_RELEASED);
+        world.worldLogic.mouseInput(x, y, world.worldLogic.MOUSE_RELEASED);
         return true;
     }
 }

@@ -23,9 +23,9 @@ public class WorldRenderer {
         this.world = world;
 
         background = new Texture("background.png");
-        cellImage[World.NATURAL] = new Texture("natural.png");
-        cellImage[World.ME] = new Texture("me.png");
-        cellImage[World.OPPONENT] = new Texture("opponent.png");
+        cellImage[Player.NATURAL] = new Texture("natural.png");
+        cellImage[Player.ME] = new Texture("me.png");
+        cellImage[Player.OPPONENT] = new Texture("opponent.png");
         cellFrame = new Texture("frame.png");
         font = new BitmapFont();
     }

@@ -40,12 +40,12 @@ public class Cell {
     
     public void attack(Cell cell) {
         if(cell != this) {
-            cell.defender(virusNumber / 2);
+            cell.defend(virusNumber / 2);
             virusNumber -= virusNumber / 2;
         }
     }
 
-    public void defender(int attacker) {
+    public void defend(int attacker) {
         virusNumber -= attacker;
     }
 
@@ -58,11 +58,10 @@ public class Cell {
     }
     
     private void registerMouseListener() {
-        world.registerMouseListener(new World.MouseListener() {
+        world.mouseInput.registerMouseListener(new MouseInput.MouseListener() {
             @Override public void notifyMouseListener(int x, int y) {
                 if(x >= position.x && x <= position.x + IMAGE_SIZE && y >= position.y && y <= position.y + IMAGE_SIZE) {
                         mouseOn = true;
-                        System.out.println(x + " " + y);
                 }
                 else {
                     mouseOn = false;

@@ -33,22 +33,6 @@ public class Cell {
         registerMouseListener();
     }
 
-    public Vector2 getPosition() {
-        return position;
-    }
-
-    public int getVirusNumber() {
-        return virusNumber;
-    }
-    
-    public boolean isMouseOn() {
-        return mouseOn;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-    
     public void attack(Cell cell) {
         if(cell != this) {
             int attacker = virusNumber / 2;
@@ -76,6 +60,30 @@ public class Cell {
         }
     }
 
+    public Vector2 getPosition() {
+        return position;
+    }
+
+    public int getVirusNumber() {
+        return virusNumber;
+    }
+    
+    public boolean isMouseOn() {
+        return mouseOn;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+    
+    public boolean isMe() {
+        return player == world.player[Player.ME];
+    }
+
+    public boolean isOverlapWithCell(int x, int y) {
+        return (x >= position.x && x <= position.x + IMAGE_SIZE) && (y >= position.y && y <= position.y + IMAGE_SIZE);
+    }
+
     private void registerTimerListener() {
         world.worldTimer.registerTimerListener(new WorldTimer.TimerListener() {
             @Override public void notifyTimerListener() {
@@ -98,13 +106,5 @@ public class Cell {
                 }
             }
         });
-    }
-
-    public boolean isOverlapWithCell(int x, int y) {
-        return (x >= position.x && x <= position.x + IMAGE_SIZE) && (y >= position.y && y <= position.y + IMAGE_SIZE);
-    }
-
-    public boolean isMe() {
-        return player == world.player[Player.ME];
     }
 }

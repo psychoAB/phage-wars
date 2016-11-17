@@ -10,6 +10,10 @@ public class WorldLogic {
     public static final int MOUSE_DRAG = 2;
     public static final int MOUSE_RELEASED = 3;
 
+    public static final int NOT_OVER = 0;
+    public static final int ME_WON = 1;
+    public static final int OPPONENT_WON = 2;
+
     private World world;
     public MouseInput mouseInput;
 
@@ -85,6 +89,35 @@ public class WorldLogic {
             }
         }
         return null;
+    }
+
+    public int isGameOver() {
+        LinkedList<Cell> cells = world.getCells();
+
+        boolean [] isPlayersFound = new boolean [world.PLAYER_NUMBER];
+
+        for(Cell cell : cells) {
+            isPlayersFound[cell.getPlayer().getPlayerType()] = true;
+        }
+
+        int count = 0;
+        for(boolean isPlayerFound : isPlayersFound) {
+            if(isPlayerFound) {
+                count++;
+            }
+        }
+
+        if(count != 1){
+            return NOT_OVER;
+        }
+        else {
+            if(isPlayersFound[Player.ME]) {
+                return ME_WON;
+            }
+            else {
+                return OPPONENT_WON;
+            }
+        }
     }
 
     public LinkedList<Cell> getBases() {

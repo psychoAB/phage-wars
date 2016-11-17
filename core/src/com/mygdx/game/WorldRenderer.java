@@ -68,4 +68,20 @@ public class WorldRenderer {
 
         batch.end();
     }
+
+    public void gameOver(int state) {
+        SpriteBatch batch = phageWarsGame.batch;
+        
+        batch.begin();
+
+        if(state == WorldLogic.ME_WON) {
+            font.draw(batch, "You Won", PhageWarsGame.WIDTH / 2 - 40, PhageWarsGame.HEIGHT / 2);
+        }
+        else {
+            font.draw(batch, "You Lost", PhageWarsGame.WIDTH / 2 - 40, PhageWarsGame.HEIGHT / 2);
+        }
+        font.draw(batch, "Press Enter to restart", PhageWarsGame.WIDTH / 2 - 70, PhageWarsGame.HEIGHT / 3);
+
+        batch.end();
+    }
 }

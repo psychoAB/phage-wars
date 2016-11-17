@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class World {
     
-    private static final int PLAYER_NUMBER = 3;
+    public static final int PLAYER_NUMBER = 3;
 
     public static final int NATURAL = 0;
     public static final int ME = 1;
@@ -37,10 +37,9 @@ public class World {
     private boolean aimming;
     
     public World() {
-        player[NATURAL] = new Player(0, 0);
-        player[ME] = new Player(Cell.MAX_VIRUS, Cell.MAX_REGENERATION_RATE);
-        player[OPPONENT] = new Player(Cell.MAX_VIRUS, Cell.MAX_REGENERATION_RATE);
-    
+        player[NATURAL] = new Player(0, 0, NATURAL);
+        player[ME] = new Player(Cell.MAX_VIRUS, Cell.MAX_REGENERATION_RATE, ME);
+        player[OPPONENT] = new Player(Cell.MAX_VIRUS, Cell.MAX_REGENERATION_RATE, OPPONENT);
         worldTimer = new WorldTimer();
         mouseInput = new MouseInput();
         cells = new LinkedList<Cell>();

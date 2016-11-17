@@ -12,8 +12,8 @@ public class WorldRenderer {
 
     private World world;
     
+    private Texture [] cellImage = new Texture[World.PLAYER_NUMBER];
     private Texture background;
-    private Texture cellImage;
     private Texture cellFrame;
 
     private BitmapFont font;
@@ -23,7 +23,9 @@ public class WorldRenderer {
         this.world = world;
 
         background = new Texture("background.png");
-        cellImage = new Texture("cell.png");
+        cellImage[World.NATURAL] = new Texture("natural.png");
+        cellImage[World.ME] = new Texture("me.png");
+        cellImage[World.OPPONENT] = new Texture("opponent.png");
         cellFrame = new Texture("frame.png");
         font = new BitmapFont();
     }
@@ -39,7 +41,7 @@ public class WorldRenderer {
 
         for(Cell cell : cells) {
             Vector2 cellPosition = cell.getPosition();
-            batch.draw(cellImage, cellPosition.x, cellPosition.y);
+            batch.draw(cellImage[cell.getPlayer().getPlayerType()], cellPosition.x, cellPosition.y);
             if(cell.getVirusNumber() != 0) {
                 font.draw(batch, "" + cell.getVirusNumber(), cellPosition.x + Cell.IMAGE_SIZE / 2, cellPosition.y + Cell.IMAGE_SIZE / 2);
             }

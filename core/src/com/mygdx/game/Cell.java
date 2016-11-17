@@ -7,35 +7,26 @@ public class Cell {
     public static final int IMAGE_SIZE = 120;
     public static final int FRAME_SIZE = 135;
 
-    public static final int NATURAL = 0;
-    public static final int PLAYER = 1;
-    public static final int OPPONENT = 2;
-
     public static final int MAX_VIRUS = 50;
     public static final int MAX_REGENERATION_RATE= 3;
 
     private World world;
 
-    private int cellType;
+    private Player player;
     private Vector2 position;
     private int virusNumber;
     private int regenerationRate;
     private boolean mouseOn;
 
-    public Cell(int x, int y,int cellType, World world) {
+    public Cell(int x, int y,Player player, World world) {
         this.world = world;
 
         position = new Vector2(x - IMAGE_SIZE / 2, y - IMAGE_SIZE / 2);
 
-        this.cellType = cellType;
-        if(cellType != NATURAL) {
-            virusNumber = MAX_VIRUS;
-            regenerationRate = MAX_REGENERATION_RATE;
-        }
-        else {
-            virusNumber = 0;
-            regenerationRate = 0;
-        }
+        this.player = player;
+        virusNumber = player.getInitVirusNumber();
+        regenerationRate = player.getRegenerationRate();
+
         mouseOn = false;
 
         registerTimerListener();
@@ -54,19 +45,19 @@ public class Cell {
         return mouseOn;
     }
 
-    public int getCellType() {
-        return cellType;
+    public Player getPlayer() {
+        return player;
     }
     
     public void attack(Cell cell) {
         if(cell != this) {
-            cell.defend(virusNumber / 2, cellType);
+            cell.defend(virusNumber / 2, player);
             virusNumber -= virusNumber / 2;
         }
     }
 
-    public void defend(int attacker, int attackerType) {
-        if(attackerType == cellType) {
+    public void defend(int attacker, Player player) {
+        if(player == this.player) {
             virusNumber += attacker;
             if(virusNumber > 100) {
                 virusNumber = 100;
@@ -75,7 +66,7 @@ public class Cell {
         else {
             virusNumber -= attacker;
             if(virusNumber <= 0) {
-                cellType = attackerType;
+                this.player = player;
                 virusNumber = Math.abs(virusNumber);
                 regenerationRate = MAX_REGENERATION_RATE;
             }

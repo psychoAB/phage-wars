@@ -23,6 +23,7 @@ public class World {
     public WorldLogic worldLogic;
 
     private LinkedList<Cell> cells;
+    public LinkedList<Virus> virus;
     
     public World() {
         player[Player.NATURAL] = new Player(0, 0, Player.NATURAL);
@@ -31,6 +32,7 @@ public class World {
         worldTimer = new WorldTimer();
         worldLogic = new WorldLogic(this);
         cells = new LinkedList<Cell>();
+        virus = new LinkedList<Virus>();
 
         for(int [] cell: initCell) {
             cells.add(new Cell(cell[0], cell[1], player[cell[2]], this));
@@ -39,5 +41,9 @@ public class World {
 
     public LinkedList<Cell> getCells() {
         return cells;
+    }
+
+    public LinkedList<Virus> getVirus() {
+        return virus;
     }
 }

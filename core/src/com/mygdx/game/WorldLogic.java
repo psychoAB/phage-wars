@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.math.Vector2;
 import java.util.LinkedList;
 
 public class WorldLogic {
@@ -54,6 +55,25 @@ public class WorldLogic {
             bases.clear();
             target = null;
             mouseInput.notifyMouseListeners(x, y);
+        }
+    }
+
+    public void update() {
+        LinkedList<Virus> virus = world.getVirus();
+        LinkedList<Virus> virusAtDestination = new LinkedList<Virus>();
+
+        for(Virus vi : virus) {
+            vi.update();
+            Vector2 virusPosition = vi.getPosition();
+            Cell tempCell = overlapWithCell((int)virusPosition.x, (int)virusPosition.y);
+            if(tempCell != null && tempCell == vi.getTargetCell()) {
+                tempCell.defend(vi);
+                virusAtDestination.add(vi);
+            }
+        }
+
+        for(Virus vi : virusAtDestination) {
+            world.getVirus().remove(vi);
         }
     }
 

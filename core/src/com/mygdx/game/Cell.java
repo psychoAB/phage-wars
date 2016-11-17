@@ -51,22 +51,25 @@ public class Cell {
     
     public void attack(Cell cell) {
         if(cell != this) {
-            cell.defend(virusNumber / 2, player);
+            int attacker = virusNumber / 2;
+            for(int i = 0; i < attacker; i++) {
+                world.getVirus().add(new Virus((int)position.x, (int)position.y, cell, player));
+            }
             virusNumber -= virusNumber / 2;
         }
     }
 
-    public void defend(int attacker, Player player) {
-        if(player == this.player) {
-            virusNumber += attacker;
+    public void defend(Virus virus) {
+        if(virus.getPlayer() == player) {
+            virusNumber++;
             if(virusNumber > 100) {
                 virusNumber = 100;
             }
         }
         else {
-            virusNumber -= attacker;
+            virusNumber--;
             if(virusNumber <= 0) {
-                this.player = player;
+                player = virus.getPlayer();
                 virusNumber = Math.abs(virusNumber);
                 regenerationRate = MAX_REGENERATION_RATE;
             }

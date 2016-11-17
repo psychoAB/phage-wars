@@ -60,13 +60,17 @@ public class Cell {
     private void registerMouseListener() {
         world.mouseInput.registerMouseListener(new MouseInput.MouseListener() {
             @Override public void notifyMouseListener(int x, int y) {
-                if(x >= position.x && x <= position.x + IMAGE_SIZE && y >= position.y && y <= position.y + IMAGE_SIZE) {
-                        mouseOn = true;
+                if(isOverlapWithCell(x, y) {
+                    mouseOn = true;
                 }
                 else {
                     mouseOn = false;
                 }
             }
         });
+    }
+
+    public boolean isOverlapWithCell(int x, int y) {
+        return (x >= position.x && x <= position.x + IMAGE_SIZE) && (y >= position.y && y <= position.y + IMAGE_SIZE)
     }
 }

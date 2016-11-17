@@ -5,10 +5,10 @@ import java.util.LinkedList;
 
 public class World {
 
-    public  static final int MOUSE_MOVE = 0;
-    public  static final int MOUSE_PRESSED= 1;
-    public  static final int MOUSE_DRAG = 2;
-    public  static final int MOUSE_RELEASED = 3;
+    public static final int MOUSE_MOVE = 0;
+    public static final int MOUSE_PRESSED= 1;
+    public static final int MOUSE_DRAG = 2;
+    public static final int MOUSE_RELEASED = 3;
     
     private static final int [][] initCellPosition = new int [][] {
         {100, PhageWarsGame.HEIGHT / 2},
@@ -55,7 +55,7 @@ public class World {
             }
         }
         else if(mouseInputType == MOUSE_DRAG) {
-            
+
         }
         else if(mouseInputType == MOUSE_RELEASED) {
             target = overlapWithCell(x, y);
@@ -70,11 +70,8 @@ public class World {
 
     private Cell overlapWithCell(int x, int y) {
         for(Cell cell : cells) {
-            Vector2 cellPosition = cell.getPosition();
-            if(x >= cellPosition.x && x <= cellPosition.x + Cell.IMAGE_SIZE) {
-                if(y >= cellPosition.y && y <= cellPosition.y + Cell.IMAGE_SIZE) {
-                    return cell;
-                }
+            if(cell.isOverlapWithCell(x, y)) {
+                return cell;
             }
         }
         return null;

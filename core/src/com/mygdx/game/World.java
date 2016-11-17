@@ -10,14 +10,14 @@ public class World {
     public static final int MOUSE_DRAG = 2;
     public static final int MOUSE_RELEASED = 3;
     
-    private static final int [][] initCellPosition = new int [][] {
-        {100, PhageWarsGame.HEIGHT / 2},
-        {PhageWarsGame.WIDTH - 100, PhageWarsGame.HEIGHT / 2},
-        {PhageWarsGame.WIDTH / 2, PhageWarsGame.HEIGHT / 2},
-        {PhageWarsGame.WIDTH / 4 + 50, PhageWarsGame.HEIGHT / 4},
-        {PhageWarsGame.WIDTH / 4 + 50, PhageWarsGame.HEIGHT * 3 / 4},
-        {PhageWarsGame.WIDTH * 3 / 4 - 50, PhageWarsGame.HEIGHT / 4},
-        {PhageWarsGame.WIDTH * 3 / 4 - 50, PhageWarsGame.HEIGHT * 3 / 4}
+    private static final int [][] initCell= new int [][] {
+        {100, PhageWarsGame.HEIGHT / 2, Cell.PLAYER},
+        {PhageWarsGame.WIDTH - 100, PhageWarsGame.HEIGHT / 2, Cell.OPPONENT},
+        {PhageWarsGame.WIDTH / 2, PhageWarsGame.HEIGHT / 2, Cell.NATURAL},
+        {PhageWarsGame.WIDTH / 4 + 50, PhageWarsGame.HEIGHT / 4, Cell.NATURAL},
+        {PhageWarsGame.WIDTH / 4 + 50, PhageWarsGame.HEIGHT * 3 / 4, Cell.NATURAL},
+        {PhageWarsGame.WIDTH * 3 / 4 - 50, PhageWarsGame.HEIGHT / 4, Cell.NATURAL},
+        {PhageWarsGame.WIDTH * 3 / 4 - 50, PhageWarsGame.HEIGHT * 3 / 4, Cell.NATURAL}
     };
 
     public WorldTimer worldTimer;
@@ -33,8 +33,8 @@ public class World {
         mouseInput = new MouseInput();
         cells = new LinkedList<Cell>();
 
-        for(int [] cellPosition : initCellPosition) {
-            cells.add(new Cell(cellPosition[0], cellPosition[1], this));
+        for(int [] cell: initCell) {
+            cells.add(new Cell(cell[0], cell[1], cell[2], this));
         }
 
         aimming = false;

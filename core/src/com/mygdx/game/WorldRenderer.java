@@ -40,7 +40,9 @@ public class WorldRenderer {
         for(Cell cell : cells) {
             Vector2 cellPosition = cell.getPosition();
             batch.draw(cellImage, cellPosition.x, cellPosition.y);
-            font.draw(batch, "" + cell.getVirusNumber(), cellPosition.x + Cell.IMAGE_SIZE / 2, cellPosition.y + Cell.IMAGE_SIZE / 2);
+            if(cell.getVirusNumber() != 0) {
+                font.draw(batch, "" + cell.getVirusNumber(), cellPosition.x + Cell.IMAGE_SIZE / 2, cellPosition.y + Cell.IMAGE_SIZE / 2);
+            }
             if(cell.isMouseOn()) {
                 batch.draw(cellFrame, cellPosition.x - (Cell.FRAME_SIZE - Cell.IMAGE_SIZE) / 2 , cellPosition.y- (Cell.FRAME_SIZE - Cell.IMAGE_SIZE) / 2);
             }

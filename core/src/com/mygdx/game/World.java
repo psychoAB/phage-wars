@@ -24,7 +24,7 @@ public class World {
     public MouseInput mouseInput;
 
     private LinkedList<Cell> cells;
-    private Cell base;
+    private LinkedList<Cell> bases;
     private Cell target;
     private boolean aimming;
     
@@ -32,6 +32,7 @@ public class World {
         worldTimer = new WorldTimer();
         mouseInput = new MouseInput();
         cells = new LinkedList<Cell>();
+        bases = new LinkedList<Cell>();
 
         for(int [] cell: initCell) {
             cells.add(new Cell(cell[0], cell[1], cell[2], this));
@@ -49,21 +50,28 @@ public class World {
             mouseInput.notifyMouseListeners(x, y);
         }
         else if(mouseInputType == MOUSE_PRESSED) {
-            base = overlapWithCell(x, y);
-            if(base != null) {
+            Cell tempCell = overlapWithCell(x, y);
+            if(tempCell != null) {
+                bases.add(tempCell);
                 aimming = true;
             }
         }
         else if(mouseInputType == MOUSE_DRAG) {
+            Cell tempCell = overlapWithCell(x, y);
+            if(tempCell != null && tempCell.getCellType() == bases.get(0).getCellType() && !bases.contains(tempCell)) {
+                bases.add(tempCell);
+            }
             mouseInput.notifyMouseListeners(x, y);
         }
         else if(mouseInputType == MOUSE_RELEASED) {
             target = overlapWithCell(x, y);
-            if(target != null && base != null) {
+            if(target != null && bases.size() != 0) {
                 aimming = false;
-                base.attack(target);
+                for(Cell cell : bases) {
+                    cell.attack(target);
+                }
             }
-            base = null;
+            bases.clear();
             target = null;
             mouseInput.notifyMouseListeners(x, y);
         }
@@ -78,7 +86,7 @@ public class World {
         return null;
     }
 
-    public Cell getBase() {
-        return base;
+    public LinkedList<Cell> getBases() {
+        return bases;
     }
 }

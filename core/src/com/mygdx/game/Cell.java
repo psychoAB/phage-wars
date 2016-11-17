@@ -53,6 +53,10 @@ public class Cell {
     public boolean isMouseOn() {
         return mouseOn;
     }
+
+    public int getCellType() {
+        return cellType;
+    }
     
     public void attack(Cell cell) {
         if(cell != this) {
@@ -62,11 +66,19 @@ public class Cell {
     }
 
     public void defend(int attacker, int attackerType) {
-        virusNumber -= attacker;
-        if(virusNumber <= 0) {
-            cellType = attackerType;
-            virusNumber = Math.abs(virusNumber);
-            regenerationRate = MAX_REGENERATION_RATE;
+        if(attackerType == cellType) {
+            virusNumber += attacker;
+            if(virusNumber > 100) {
+                virusNumber = 100;
+            }
+        }
+        else {
+            virusNumber -= attacker;
+            if(virusNumber <= 0) {
+                cellType = attackerType;
+                virusNumber = Math.abs(virusNumber);
+                regenerationRate = MAX_REGENERATION_RATE;
+            }
         }
     }
 
@@ -84,7 +96,7 @@ public class Cell {
     private void registerMouseListener() {
         world.mouseInput.registerMouseListener(new MouseInput.MouseListener() {
             @Override public void notifyMouseListener(int x, int y) {
-                if(isOverlapWithCell(x, y) || Cell.this == world.getBase()) {
+                if(isOverlapWithCell(x, y) || world.getBases().contains(Cell.this)) {
                     mouseOn = true;
                 }
                 else { 

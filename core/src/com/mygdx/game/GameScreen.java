@@ -30,6 +30,6 @@ public class GameScreen extends ScreenAdapter {
     }
 
     public static int screenCoordinateToTextureCoordinate(int screenY) {
-        return screenY = PhageWarsGame.HEIGHT - screenY;
+        return PhageWarsGame.HEIGHT - screenY;
     }
 }

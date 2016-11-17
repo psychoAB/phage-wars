@@ -55,7 +55,7 @@ public class World {
             }
         }
         else if(mouseInputType == MOUSE_DRAG) {
-
+            mouseInput.notifyMouseListeners(x, y);
         }
         else if(mouseInputType == MOUSE_RELEASED) {
             target = overlapWithCell(x, y);
@@ -65,6 +65,7 @@ public class World {
             }
             base = null;
             target = null;
+            mouseInput.notifyMouseListeners(x, y);
         }
     }
 
@@ -75,5 +76,9 @@ public class World {
             }
         }
         return null;
+    }
+
+    public Cell getBase() {
+        return base;
     }
 }

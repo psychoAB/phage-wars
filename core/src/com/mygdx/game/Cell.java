@@ -60,7 +60,7 @@ public class Cell {
     private void registerMouseListener() {
         world.mouseInput.registerMouseListener(new MouseInput.MouseListener() {
             @Override public void notifyMouseListener(int x, int y) {
-                if(isOverlapWithCell(x, y)) {
+                if(isOverlapWithCell(x, y) || Cell.this == world.getBase()) {
                     mouseOn = true;
                 }
                 else { 

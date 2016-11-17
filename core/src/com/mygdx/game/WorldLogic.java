@@ -32,14 +32,14 @@ public class WorldLogic {
         }
         else if(mouseInputType == MOUSE_PRESSED) {
             Cell tempCell = overlapWithCell(x, y);
-            if(tempCell != null && tempCell.isMe()) {
+            if(tempCell != null && isAllies(tempCell, world.player[Player.ME])) {
                 bases.add(tempCell);
                 aimming = true;
             }
         }
         else if(mouseInputType == MOUSE_DRAG) {
             Cell tempCell = overlapWithCell(x, y);
-            if(tempCell != null && tempCell.isMe() && !bases.contains(tempCell)) {
+            if(tempCell != null && isAllies(tempCell, world.player[Player.ME]) && !bases.contains(tempCell)) {
                 bases.add(tempCell);
             }
             mouseInput.notifyMouseListeners(x, y);
@@ -89,5 +89,9 @@ public class WorldLogic {
 
     public LinkedList<Cell> getBases() {
         return bases;
+    }
+
+    public boolean isAllies(Cell cell, Player player) {
+        return cell.getPlayer() == player;
     }
 }

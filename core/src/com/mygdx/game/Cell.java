@@ -75,10 +75,6 @@ public class Cell {
     public Player getPlayer() {
         return player;
     }
-    
-    public boolean isMe() {
-        return player == world.player[Player.ME];
-    }
 
     public boolean isOverlapWithCell(int x, int y) {
         return (x >= position.x && x <= position.x + IMAGE_SIZE) && (y >= position.y && y <= position.y + IMAGE_SIZE);

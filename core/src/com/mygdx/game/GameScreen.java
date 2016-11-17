@@ -28,4 +28,8 @@ public class GameScreen extends ScreenAdapter {
 
         worldRenderer.render(delta);
     }
+
+    public static int screenCoordinateToTextureCoordinate(int screenY) {
+        return screenY = PhageWarsGame.HEIGHT - screenY;
+    }
 }

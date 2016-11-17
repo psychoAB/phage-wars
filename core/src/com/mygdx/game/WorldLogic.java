@@ -31,14 +31,14 @@ public class WorldLogic {
         }
         else if(mouseInputType == MOUSE_PRESSED) {
             Cell tempCell = overlapWithCell(x, y);
-            if(tempCell != null) {
+            if(tempCell != null && tempCell.isMe()) {
                 bases.add(tempCell);
                 aimming = true;
             }
         }
         else if(mouseInputType == MOUSE_DRAG) {
             Cell tempCell = overlapWithCell(x, y);
-            if(tempCell != null && tempCell.getPlayer() == bases.get(0).getPlayer() && !bases.contains(tempCell)) {
+            if(tempCell != null && tempCell.isMe() && !bases.contains(tempCell)) {
                 bases.add(tempCell);
             }
             mouseInput.notifyMouseListeners(x, y);

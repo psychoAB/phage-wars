@@ -14,6 +14,7 @@ public class WorldRenderer {
     
     private Texture background;
     private Texture cellImage;
+    private Texture cellFrame;
 
     private BitmapFont font;
 
@@ -23,6 +24,7 @@ public class WorldRenderer {
 
         background = new Texture("background.png");
         cellImage = new Texture("cell.png");
+        cellFrame = new Texture("frame.png");
         font = new BitmapFont();
     }
 
@@ -39,6 +41,9 @@ public class WorldRenderer {
             Vector2 cellPosition = cell.getPosition();
             batch.draw(cellImage, cellPosition.x, cellPosition.y);
             font.draw(batch, "" + cell.getVirusNumber(), cellPosition.x + Cell.IMAGE_SIZE / 2, cellPosition.y + Cell.IMAGE_SIZE / 2);
+            if(cell.isMouseOn()) {
+                batch.draw(cellFrame, cellPosition.x - (Cell.FRAME_SIZE - Cell.IMAGE_SIZE) / 2 , cellPosition.y- (Cell.FRAME_SIZE - Cell.IMAGE_SIZE) / 2);
+            }
         }
 
         batch.end();

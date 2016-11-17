@@ -23,6 +23,7 @@ public class World {
     public WorldTimer worldTimer;
 
     private LinkedList<Cell> cells;
+    private LinkedList<MouseListener> mouseListeners;
     private Cell base;
     private Cell target;
     private boolean aimming;
@@ -30,6 +31,7 @@ public class World {
     public World() {
         worldTimer = new WorldTimer();
         cells = new LinkedList<Cell>();
+        mouseListeners = new LinkedList<MouseListener>();
 
         for(int [] cellPosition : initCellPosition) {
             cells.add(new Cell(cellPosition[0], cellPosition[1], this));
@@ -42,20 +44,22 @@ public class World {
         return cells;
     }
 
-    public void mouseInput(int x, int y, int type) {
-        if(type == MOUSE_MOVE) {
-
+    public void mouseInput(int x, int y, int mouseInputType) {
+        if(mouseInputType == MOUSE_MOVE) {
+            for(MouseListener listener : mouseListeners) {
+                listener.notifyMouseListener(x, y);
+            }
         }
-        else if(type == MOUSE_PRESSED) {
+        else if(mouseInputType == MOUSE_PRESSED) {
             base = overlapWithCell(x, y);
             if(base != null) {
                 aimming = true;
             }
         }
-        else if(type == MOUSE_DRAG) {
+        else if(mouseInputType == MOUSE_DRAG) {
             
         }
-        else if(type == MOUSE_RELEASED) {
+        else if(mouseInputType == MOUSE_RELEASED) {
             target = overlapWithCell(x, y);
             if(target != null && base != null) {
                 aimming = false;
@@ -76,5 +80,13 @@ public class World {
             }
         }
         return null;
+    }
+
+    public interface MouseListener {
+        void notifyMouseListener(int x, int y);
+    }
+
+    public void registerMouseListener(MouseListener listener) {
+        mouseListeners.add(listener);
     }
 }

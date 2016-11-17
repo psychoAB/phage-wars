@@ -15,6 +15,12 @@ public class GameInput extends InputAdapter {
         dragging = false;
     }
 
+    @Override public boolean mouseMoved(int x, int y) {
+        y = PhageWarsGame.HEIGHT - y;
+        world.mouseInput(x, y, world.MOUSE_MOVE);
+        return true;
+    }
+
     @Override public boolean touchDown(int x, int y, int pointer, int button) {
         if(button != Input.Buttons.LEFT || pointer > 0) {
             return false;

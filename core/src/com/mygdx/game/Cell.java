@@ -11,8 +11,8 @@ public class Cell {
     public static final int PLAYER = 1;
     public static final int OPPONENT = 2;
 
-    private static final int MAX_VIRUS = 50;
-    private static final int MAX_REGENERATION_RATE= 3;
+    public static final int MAX_VIRUS = 50;
+    public static final int MAX_REGENERATION_RATE= 3;
 
     private World world;
 

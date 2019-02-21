@@ -2,7 +2,7 @@
 
 My OOP-Laboratory project using libgdx
 
-#How to play
+### How to play
 
 * you are blue side
 

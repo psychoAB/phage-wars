@@ -2,6 +2,8 @@
 
 My OOP-Laboratory project using libgdx
 
+Gameplay mechanics from [Phage Wars](https://armorgames.com/play/2675/phage-wars) and [Phage Wars 2](https://armorgames.com/play/4013/phage-wars-2)
+
 ### How to play
 
 * you are blue side

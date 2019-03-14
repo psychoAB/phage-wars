@@ -1,13 +1,26 @@
 # phage-wars
 
-My OOP-Laboratory project using [libgdx](https://libgdx.badlogicgames.com)
+##### Description:
+###### My OOP-Laboratory project using [libgdx](https://libgdx.badlogicgames.com)
 
-Gameplay mechanics from [Phage Wars](https://armorgames.com/play/2675/phage-wars) and [Phage Wars 2](https://armorgames.com/play/4013/phage-wars-2)
+###### Gameplay mechanics from [Phage Wars](https://armorgames.com/play/2675/phage-wars) and [Phage Wars 2](https://armorgames.com/play/4013/phage-wars-2)
 
-### How to play
+___
 
+### Requirement:
+1. [Gradle](https://gradle.org/)
+2. [OpenJDK-8-jdk](https://openjdk.java.net/)
+```bash
+apt-get install openjdk-8-jdk
+```
+may require superuser privilege
+
+### How to build:
+```bash
+./gradlew desktop:run
+```
+
+### How to play:
 * you are blue side
-
 * click and drag mouse to order your cell to attack other cell
-
 * get rid of opponent cell to win

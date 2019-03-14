@@ -8,7 +8,7 @@
 ___
 
 ### Requirement:
-1. [Gradle](https://gradle.org/)
+1. [Gradle](https://gradle.org/) - __Gradle__ is an open-source build automation tool focused on flexibility and performance
 2. [OpenJDK-8-jdk](https://openjdk.java.net/)
 ```bash
 apt-get install gradle openjdk-8-jdk

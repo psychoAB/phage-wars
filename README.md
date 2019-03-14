@@ -9,14 +9,9 @@ ___
 
 ### Requirement:
 1. [Gradle](https://gradle.org/)
-```bash
-apt-get insall gradle
-```
-may require superuser privilege
-
 2. [OpenJDK-8-jdk](https://openjdk.java.net/)
 ```bash
-apt-get install openjdk-8-jdk
+apt-get install gradle openjdk-8-jdk
 ```
 may require superuser privilege
 

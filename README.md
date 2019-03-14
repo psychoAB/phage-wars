@@ -1,7 +1,7 @@
 # phage-wars
 
 ##### Description:
-###### My OOP-Laboratory project using [libgdx](https://libgdx.badlogicgames.com)
+###### My OOP-Laboratory project using [libGDX](https://libgdx.badlogicgames.com)
 
 ###### Gameplay mechanics from [Phage Wars](https://armorgames.com/play/2675/phage-wars) and [Phage Wars 2](https://armorgames.com/play/4013/phage-wars-2)
 
